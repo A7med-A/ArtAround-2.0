@@ -16,6 +16,7 @@ router.get("/:slug", getOneMuseum);
 router.post("/", createMuseum);
 // put
 router.put("/:slug", updateMuseum);
+router.patch("/:slug", updateMuseum);
 // delete
 router.delete("/:slug", deleteMuseum);
 

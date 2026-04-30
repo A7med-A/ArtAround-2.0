@@ -2,7 +2,7 @@ const Visit = require("../models/Visit");
 
 async function getAllVisits(req, res) {
   try {
-    const visits = await Visit.find({ museumId: req.params.slug });
+    const visits = await Visit.find({ museumId: req.params.slug }).populate("items");
     res.json(visits);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -11,7 +11,7 @@ async function getAllVisits(req, res) {
 
 async function getOneVisit(req, res) {
   try {
-    const visit = await Visit.findById(req.params.id);
+    const visit = await Visit.findById(req.params.id).populate("items");
     if (!visit) {
       return res.status(404).json({ error: "Visit not found" });
     }

@@ -11,7 +11,7 @@ async function getAllMuseums(req, res) {
 
 async function getOneMuseum(req, res) {
   try {
-    const museum = await Museum.findById(req.params.id);
+    const museum = await Museum.findOne({ slug: req.params.slug });
     if (!museum) {
       return res.status(404).json({ error: "Museum not found" });
     }
@@ -32,7 +32,9 @@ async function createMuseum(req, res) {
 
 async function updateMuseum(req, res) {
   try {
-    const museum = await Museum.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const museum = await Museum.findOneAndUpdate({ slug: req.params.slug }, req.body, {
+      new: true,
+    });
     if (!museum) {
       return res.status(404).json({ error: "Museum not found" });
     }
@@ -44,7 +46,7 @@ async function updateMuseum(req, res) {
 
 async function deleteMuseum(req, res) {
   try {
-    const museum = await Museum.findByIdAndDelete(req.params.id);
+    const museum = await Museum.findOneAndDelete({ slug: req.params.slug });
     if (!museum) {
       return res.status(404).json({ error: "Museum not found" });
     }
