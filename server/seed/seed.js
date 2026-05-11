@@ -26,7 +26,6 @@ const pinacotecaData = {
     createdBy: "autore1",
     logoUrl: "/museums/pinacoteca-bologna/logo.png",
     coverImageUrl: "/museums/pinacoteca-bologna/cover.jpg",
-    published: true,
   },
   floors: [
     { order: 0, name: "Piano Terra", width: 15, height: 10 },
@@ -44,7 +43,6 @@ const pinacotecaData = {
       license: "CC0",
       tags: ["medioevo", "gotico", "polittico"],
       createdBy: "autore1",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -74,7 +72,6 @@ const pinacotecaData = {
       license: "CC0",
       tags: ["rinascimento", "raffaello", "religioso"],
       createdBy: "autore1",
-      published: true,
       texts: [
         {
           tone: "infantile",
@@ -109,7 +106,6 @@ const pinacotecaData = {
       license: "CC-BY",
       tags: ["rinascimento", "umbria", "pala d'altare"],
       createdBy: "autore1",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -139,7 +135,6 @@ const pinacotecaData = {
       license: "CC-BY",
       tags: ["manierismo", "parmigianino", "cinquecento"],
       createdBy: "autore1",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -169,7 +164,6 @@ const pinacotecaData = {
       license: "CC0",
       tags: ["barocco", "carracci", "controriforma"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -199,7 +193,6 @@ const pinacotecaData = {
       license: "CC0",
       tags: ["barocco", "reni", "seicento"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "infantile",
@@ -230,7 +223,6 @@ const pinacotecaData = {
       description:
         "Un percorso completo attraverso i capolavori della Pinacoteca, dal Trecento di Giotto al Seicento di Guido Reni.",
       createdBy: "autore1",
-      published: true,
       itemIndexes: [0, 1, 2, 3, 4, 5],
     },
     {
@@ -238,7 +230,6 @@ const pinacotecaData = {
       description:
         "Un percorso veloce sui tre capolavori imperdibili della Pinacoteca: Giotto, Raffaello e Guido Reni.",
       createdBy: "autore1",
-      published: true,
       itemIndexes: [0, 1, 5],
     },
   ],
@@ -257,7 +248,6 @@ const mamboData = {
     createdBy: "autore2",
     logoUrl: "/museums/mambo-bologna/logo.png",
     coverImageUrl: "/museums/mambo-bologna/cover.jpg",
-    published: true,
   },
   floors: [{ order: 0, name: "Piano unico", width: 18, height: 12 }],
   items: [
@@ -272,7 +262,6 @@ const mamboData = {
       license: "privata",
       tags: ["novecento", "morandi", "natura morta"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "infantile",
@@ -307,7 +296,6 @@ const mamboData = {
       license: "privata",
       tags: ["novecento", "morandi", "paesaggio"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -337,7 +325,6 @@ const mamboData = {
       license: "privata",
       tags: ["novecento", "morandi", "fiori"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "semplice",
@@ -367,7 +354,6 @@ const mamboData = {
       license: "privata",
       tags: ["contemporanea", "burri", "informale"],
       createdBy: "autore2",
-      published: true,
       texts: [
         {
           tone: "infantile",
@@ -398,7 +384,6 @@ const mamboData = {
       description:
         "Una visita ai capolavori del MAMbo: tre opere di Morandi e il Grande Ferro di Burri.",
       createdBy: "autore2",
-      published: true,
       itemIndexes: [0, 1, 2, 3],
     },
     {
@@ -406,7 +391,6 @@ const mamboData = {
       description:
         "Tre opere di Giorgio Morandi per scoprire il maestro bolognese della natura morta e del paesaggio.",
       createdBy: "autore2",
-      published: true,
       itemIndexes: [0, 1, 2],
     },
   ],

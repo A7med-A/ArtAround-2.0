@@ -1,6 +1,6 @@
 const router = require("express").Router();
+const { requireAuth, requireAdmin, canAccessMuseum } = require("../middleware/auth.middleware");
 
-// controller
 const {
   getAllMuseums,
   getOneMuseum,
@@ -9,19 +9,25 @@ const {
   deleteMuseum,
 } = require("../controllers/museums.controller");
 
-// get
-router.get("/", getAllMuseums);
-router.get("/:slug", getOneMuseum);
-// post
-router.post("/", createMuseum);
-// put
-router.put("/:slug", updateMuseum);
-router.patch("/:slug", updateMuseum);
-// delete
-router.delete("/:slug", deleteMuseum);
+// Tutte le rotte richiedono autenticazione
+router.use(requireAuth);
 
-// sotto-router
-router.use("/:slug/items", require("./items.nested.routes"));
-router.use("/:slug/visits", require("./visits.nested.routes"));
+// Read
+router.get("/", getAllMuseums);
+router.get("/:slug", canAccessMuseum, getOneMuseum);
+
+// Create — solo admin
+router.post("/", requireAdmin, createMuseum);
+
+// Update — admin sempre, author solo per il proprio museo
+router.put("/:slug", canAccessMuseum, updateMuseum);
+router.patch("/:slug", canAccessMuseum, updateMuseum);
+
+// Delete — solo admin
+router.delete("/:slug", requireAdmin, deleteMuseum);
+
+// Sotto-router (items, visits): l'auth è già in req.user; verifica accesso al museo
+router.use("/:slug/items", canAccessMuseum, require("./items.nested.routes"));
+router.use("/:slug/visits", canAccessMuseum, require("./visits.nested.routes"));
 
 module.exports = router;

@@ -6,7 +6,7 @@ const cellSchema = new mongoose.Schema(
     y: { type: Number, required: true, min: 0 },
     type: {
       type: String,
-      enum: ["muro", "item", "uscita", "ingresso"],
+      enum: ["muro", "item", "uscita", "ingresso", "bagno"],
       required: true,
     },
     itemId: {
@@ -47,7 +47,6 @@ const museumSchema = new mongoose.Schema(
     createdBy: { type: String, required: true, index: true },
     logoUrl: { type: String },
     coverImageUrl: { type: String },
-    published: { type: Boolean, default: false, index: true },
 
     floors: { type: [floorSchema], default: [] },
   },

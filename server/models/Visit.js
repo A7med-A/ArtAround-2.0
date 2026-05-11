@@ -31,13 +31,6 @@ const visitSchema = new mongoose.Schema(
       index: true,
     },
 
-    // Stato pubblicazione
-    published: {
-      type: Boolean,
-      default: false,
-      index: true,
-    },
-
     // Sequenza ordinata di item (l'ordine dell'array = ordine delle tappe)
     items: [
       {
@@ -49,11 +42,5 @@ const visitSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-// Non si può pubblicare una visita senza item
-visitSchema.pre("save", function () {
-  if (this.published && this.items.length === 0) {
-    throw new Error("Una visita pubblicata deve avere almeno un item");
-  }
-});
 
 module.exports = mongoose.model("Visit", visitSchema);

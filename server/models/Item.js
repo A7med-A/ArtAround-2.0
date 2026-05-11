@@ -50,8 +50,6 @@ const itemSchema = new mongoose.Schema(
       index: true,
     },
 
-    published: { type: Boolean, default: false, index: true },
-
     texts: {
       type: [textSchema],
       // Ci penso dopo
