@@ -56,6 +56,8 @@ function canAccessMuseum(req, res, next) {
   if (!req.user) return res.status(401).json({ error: "Non autenticato" });
   const slug = req.params.slug;
   if (req.user.role === "admin") return next();
+  // I visitatori possono LEGGERE qualsiasi museo, ma non scrivere.
+  if (req.user.role === "visitor" && req.method === "GET") return next();
   const slugs = req.user.museumSlugs || [];
   if (req.user.role === "author" && slugs.includes(slug)) return next();
   return res.status(403).json({ error: "Non hai accesso a questo museo" });

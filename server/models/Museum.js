@@ -6,7 +6,7 @@ const cellSchema = new mongoose.Schema(
     y: { type: Number, required: true, min: 0 },
     type: {
       type: String,
-      enum: ["muro", "item", "uscita", "ingresso", "bagno"],
+      enum: ["muro", "item", "uscita", "ingresso", "bagno", "bar"],
       required: true,
     },
     itemId: {

@@ -14,6 +14,7 @@ async function getAllMuseums(req, res) {
       if (slugs.length === 0) return res.json([]);
       filter = { slug: { $in: slugs } };
     }
+    // admin e visitor vedono tutti i musei
     const museums = await Museum.find(filter);
     res.json(museums);
   } catch (error) {

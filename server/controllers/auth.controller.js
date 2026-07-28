@@ -32,7 +32,8 @@ async function register(req, res) {
       return res.status(400).json({ error: "La password deve avere almeno 6 caratteri" });
     }
 
-    const finalRole = role === "admin" ? "admin" : "author";
+    const allowed = ["admin", "author", "visitor"];
+    const finalRole = allowed.includes(role) ? role : "author";
 
     // verifica unicità manuale per messaggi più chiari
     const existing = await User.findOne({ $or: [{ username }, { email }] });
