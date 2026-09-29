@@ -1,0 +1,355 @@
+/* ═══════════════════════════════════════════════════════════════
+ * EDITOR — tag input, text variant editor, visit edit panel.
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ───────── tag input ───────── */
+.aa-tag-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aa-tag-input__box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--t-surfaceEl);
+  border: 1px solid var(--t-border);
+  border-radius: 6px;
+  cursor: text;
+  min-height: 38px;
+  align-items: center;
+  transition: border-color var(--t-transition);
+}
+.aa-tag-input__box:focus-within { border-color: var(--t-gold); }
+.aa-tag-input__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--t-goldBg);
+  border: 1px solid var(--t-goldDim);
+  color: var(--t-gold);
+  padding: 2px 4px 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.aa-tag-input__chip-x {
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  border-radius: 3px;
+}
+.aa-tag-input__chip-x:hover { background: rgba(0, 0, 0, 0.1); }
+.aa-tag-input__field {
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--t-text);
+  font-size: 13px;
+  font-family: inherit;
+  flex: 1;
+  min-width: 80px;
+}
+.aa-tag-input__hint {
+  font-size: 11px;
+  color: var(--t-textMuted);
+}
+
+/* ───────── text variant editor ───────── */
+.aa-tve { display: block; font-family: var(--t-font-body); }
+.aa-tve__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.aa-tve__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--t-textSec);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.aa-tve__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aa-tve__card {
+  background: var(--t-bg);
+  border: 1px solid var(--t-border);
+  border-radius: 8px;
+  padding: 14px;
+}
+.aa-tve__row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.aa-tve__row > .aa-field { flex: 1 1 140px; min-width: 0; }
+.aa-tve__remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 7px;
+  color: var(--t-textMuted);
+  flex: 0 0 auto;
+  border-radius: 4px;
+  display: flex;
+}
+.aa-tve__remove:hover { color: var(--t-danger); background: var(--t-surfaceHi); }
+.aa-tve__empty {
+  padding: 20px;
+  border: 1px dashed var(--t-border);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--t-textMuted);
+}
+
+/* ───────── visit edit panel ───────── */
+.aa-visit-edit {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: var(--t-font-body);
+}
+.aa-visit-edit__header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--t-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.aa-visit-edit__crumb {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t-textSec);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0;
+}
+.aa-visit-edit__crumb:hover { color: var(--t-text); }
+.aa-visit-edit__crumb-sep { color: var(--t-textMuted); }
+.aa-visit-edit__panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t-text);
+  font-family: var(--t-font-display);
+}
+.aa-visit-edit__actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+.aa-visit-edit__body {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+}
+.aa-visit-edit__sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.aa-panel {
+  background: var(--t-surface);
+  border: 1px solid var(--t-border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.aa-panel__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t-textSec);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.aa-stats { display: flex; flex-direction: column; gap: 10px; }
+.aa-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.aa-stat-row span { font-size: 12px; color: var(--t-textSec); }
+.aa-stat-row strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--t-gold);
+  font-family: var(--t-font-display);
+}
+.aa-visit-edit__right { flex: 1; min-width: 0; }
+.aa-visit-edit__right-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.aa-visit-edit__right-title {
+  font-family: var(--t-font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--t-text);
+  letter-spacing: -0.005em;
+}
+.aa-empty-stops {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--t-textMuted);
+  border: 2px dashed var(--t-border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .aa-visit-edit__header { padding: 12px 14px; flex-wrap: wrap; }
+  .aa-visit-edit__body { flex-direction: column; padding: 14px; gap: 14px; }
+  .aa-visit-edit__sidebar { width: 100%; }
+  .aa-visit-edit__right-title { font-size: 18px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   QUIZ EDITOR — domande a scelta multipla della visita guidata
+   ═══════════════════════════════════════════════════════════════ */
+
+.aa-quiz__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.aa-quiz__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--t-textSec);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.aa-quiz__hint {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--t-textMuted);
+  margin: 4px 0 0;
+  max-width: 46ch;
+}
+.aa-quiz__empty {
+  padding: 18px;
+  border: 2px dashed var(--t-border);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--t-textMuted);
+}
+.aa-quiz__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.aa-quiz__card {
+  border: 1px solid var(--t-border);
+  border-radius: 10px;
+  background: var(--t-surface);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aa-quiz__card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aa-quiz__number {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  background: var(--t-surfaceHi);
+  color: var(--t-textSec);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aa-quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-left: 34px;
+}
+.aa-quiz__option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Il pulsante a sinistra è insieme etichetta della risposta e selettore
+   di quella corretta: un solo gesto, nessun radio button separato. */
+.aa-quiz__pick {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 1px solid var(--t-border);
+  background: var(--t-surfaceEl);
+  color: var(--t-textMuted);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aa-quiz__pick:hover {
+  border-color: var(--t-borderHi);
+  color: var(--t-text);
+}
+.aa-quiz__option.is-correct .aa-quiz__pick {
+  background: var(--t-success, #3a8a5e);
+  border-color: transparent;
+  color: #fff;
+}
+.aa-quiz__card > .aa-btn {
+  align-self: flex-start;
+  margin-left: 34px;
+}
+
+@media (max-width: 768px) {
+  .aa-quiz__head { flex-direction: column; gap: 10px; }
+  .aa-quiz__options { padding-left: 0; }
+  .aa-quiz__card > .aa-btn { margin-left: 0; }
+}
+
+/* Modalità della visita: un dato, non una scelta — discende dal ruolo. */
+.aa-mode-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: var(--t-surfaceHi);
+  border: 1px solid var(--t-border);
+  color: var(--t-text);
+  font-size: 12.5px;
+  font-weight: 600;
+}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accedi · ArtAround Marketplace</title>
+
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/components/atoms.css" />
+    <link rel="stylesheet" href="styles/pages/login.css" />
+  </head>
+  <body data-mode="login">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand__mark">A</div>
+        <div class="brand__name">ArtAround</div>
+      </div>
+      <button class="aa-theme-toggle" type="button" data-slot="theme-toggle"></button>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-card__head">
+        <div class="auth-card__title" id="auth-title">Bentornato</div>
+        <div class="auth-card__sub" id="auth-subtitle">Accedi al tuo account per continuare.</div>
+      </div>
+
+      <form id="auth-form" data-mode="login">
+        <div class="aa-field">
+          <label class="aa-field__label">Username</label>
+          <input class="aa-input" name="username" placeholder="il.tuo.username" required />
+        </div>
+
+        <div class="register-only aa-field">
+          <label class="aa-field__label">Email</label>
+          <!-- type="text": il formato dell'email non viene verificato -->
+          <input class="aa-input" name="email" type="text" inputmode="email" placeholder="tu@esempio.it" />
+        </div>
+
+        <div class="aa-field">
+          <label class="aa-field__label">Password</label>
+          <input class="aa-input" name="password" type="password" placeholder="••••••••" required />
+        </div>
+
+        <div class="register-only">
+          <div class="role-label-text">Ruolo</div>
+          <div class="role-picker">
+            <label
+              ><input type="radio" name="role" value="author" checked /><span>Autore</span></label
+            >
+            <label
+              ><input type="radio" name="role" value="docente" /><span>Docente</span></label
+            >
+            <label><input type="radio" name="role" value="admin" /><span>Admin</span></label>
+          </div>
+          <p class="role-hint" data-role-hint>
+            Cura i contenuti dei musei a cui ti dà accesso un amministratore.
+          </p>
+        </div>
+
+        <button class="aa-btn aa-btn--primary" id="auth-submit" type="submit">
+          <span class="login-only">Accedi</span>
+          <span class="register-only">Crea account</span>
+        </button>
+      </form>
+
+      <div class="switch-link login-only">
+        Non hai un account? <a data-toggle-mode>Registrati</a>
+      </div>
+      <div class="switch-link register-only">
+        Hai già un account? <a data-toggle-mode>Accedi</a>
+      </div>
+    </div>
+
+    <script type="module" src="js/pages/auth.js"></script>
+  </body>
+</html>

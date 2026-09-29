@@ -1,0 +1,199 @@
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGAZIONE PRINCIPALE
+   Mobile: barra orizzontale in basso, a portata di pollice.
+   Desktop: colonna a sinistra, dove l'occhio cerca la navigazione e
+   dove non ruba altezza al contenuto.
+   Stesso markup in entrambi i casi: cambia solo la disposizione.
+   ═══════════════════════════════════════════════════════════════ */
+
+.nav {
+  flex-shrink: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 8px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+}
+
+.brand,
+.navFoot {
+  display: none;
+}
+
+.tabs {
+  display: flex;
+  flex: 1;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bubble {
+  width: 46px;
+  height: 30px;
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.active .bubble {
+  background: var(--goldBg);
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--textMuted);
+}
+
+.active .label {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Desktop: colonna laterale ───────────────────────────────── */
+
+@media (min-width: 1024px) {
+  .nav {
+    /* Disegnata a sinistra pur restando in coda al DOM: chi naviga con
+       screen reader o tastiera incontra prima il contenuto. */
+    order: -1;
+    width: 236px;
+    flex-direction: column;
+    border-top: none;
+    border-right: 1px solid var(--border);
+    padding: 20px 14px;
+    gap: 6px;
+  }
+
+  .brand {
+    display: block;
+    padding: 0 8px 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .brandRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brandName {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .brandLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--textSec);
+    text-decoration: none;
+  }
+
+  .brandLink:hover {
+    color: var(--gold);
+  }
+
+  .tabs {
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--r-md);
+    transition: background 0.15s ease;
+  }
+
+  .tab:hover {
+    background: var(--surfaceEl);
+  }
+
+  .active,
+  .active:hover {
+    background: var(--goldBg);
+  }
+
+  .bubble {
+    width: auto;
+    height: auto;
+    background: none;
+  }
+
+  .active .bubble {
+    background: none;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--textSec);
+  }
+
+  .active .label {
+    color: var(--gold);
+  }
+
+  .navFoot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding: 14px 8px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .hint {
+    font-size: 11px;
+    color: var(--textMuted);
+    line-height: 1.4;
+  }
+
+  .navFootActions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .kbd {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surfaceEl);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--textSec);
+  }
+}

@@ -1,0 +1,47 @@
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 0 18px 12px;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  flex: 1;
+  min-width: 96px;
+  padding: 8px 6px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--surfaceEl);
+  color: var(--textSec);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.active {
+  border-color: var(--goldDim);
+  background: var(--goldBg);
+  color: var(--gold);
+  font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+  .tabs {
+    padding: 0 32px 14px;
+  }
+
+  /* Su desktop i piani non devono stirarsi per riempire la riga:
+     restano linguette larghe quanto il loro nome. */
+  .tab {
+    flex: 0 0 auto;
+    min-width: 130px;
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+
+  .tab:hover {
+    border-color: var(--borderHi);
+  }
+}

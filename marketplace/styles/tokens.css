@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — ArtAround Marketplace
+   Tema: Dark/Light con accent oro · Cormorant Garamond + DM Sans
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* DARK (default) */
+:root,
+html.dark {
+  --t-bg:        #0f0e0c;
+  --t-surface:   #1a1917;
+  --t-surfaceEl: #222018;
+  --t-surfaceHi: #2a2824;
+  --t-border:    #2e2c26;
+  --t-borderHi:  #44413a;
+
+  --t-gold:      #c9a96e;
+  --t-goldDim:   #8a7148;
+  --t-goldBg:    rgba(201, 169, 110, 0.10);
+
+  --t-text:      #f0ede6;
+  --t-textSec:   #9a9180;
+  --t-textMuted: #5a5448;
+
+  --t-danger:    #d95f4b;
+  --t-success:   #6aab87;
+  --t-info:      #5b8fd4;
+
+  --t-gridBg:        #070706;
+  --t-mapRoom:       #1e2a1e;
+  --t-mapRoomBorder: #3a5a3a;
+  --t-mapArt:        #1e1e2e;
+  --t-mapArtBorder:  #3a3a6a;
+  --t-mapWall:       #2e2c26;
+  --t-mapWallBorder: #48453c;
+  --t-mapToilet:     #1e2828;
+  --t-mapToiletBorder: #3a5050;
+  --t-mapExit:       #2a1e1e;
+  --t-mapExitBorder: #6a3a3a;
+  --t-mapBath:       #1e242e;
+  --t-mapBathBorder: #3a4a6a;
+  --t-mapBar:        #2a261e;
+  --t-mapBarBorder:  #6a5a3a;
+}
+
+/* LIGHT */
+html.light {
+  --t-bg:        #f4f1ec;
+  --t-surface:   #ffffff;
+  --t-surfaceEl: #f0ece5;
+  --t-surfaceHi: #e8e3da;
+  --t-border:    #ddd8ce;
+  --t-borderHi:  #c8c0b0;
+
+  --t-gold:      #9a6f2e;
+  --t-goldDim:   #c49a52;
+  --t-goldBg:    rgba(154, 111, 46, 0.08);
+
+  --t-text:      #1a1714;
+  --t-textSec:   #6b6055;
+  --t-textMuted: #a89f94;
+
+  --t-danger:    #c0402e;
+  --t-success:   #3a8a5e;
+  --t-info:      #3060a8;
+
+  --t-gridBg:        #ebe6de;
+  --t-mapRoom:       #d4ead4;
+  --t-mapRoomBorder: #7ab87a;
+  --t-mapArt:        #d4d4ee;
+  --t-mapArtBorder:  #6a6ab0;
+  --t-mapWall:       #bab5aa;
+  --t-mapWallBorder: #8a8278;
+  --t-mapToilet:     #c8e4e4;
+  --t-mapToiletBorder: #5a9898;
+  --t-mapExit:       #eed4d4;
+  --t-mapExitBorder: #b06060;
+  --t-mapBath:       #d4e4ee;
+  --t-mapBathBorder: #6a8aaf;
+  --t-mapBar:        #eee4cc;
+  --t-mapBarBorder:  #b0905c;
+}
+
+/* Tipografia & layout */
+:root {
+  --t-font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --t-font-display: 'Cormorant Garamond', Georgia, serif;
+  --t-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --t-radius-sm: 4px;
+  --t-radius-md: 6px;
+  --t-radius-lg: 8px;
+  --t-radius-xl: 12px;
+
+  --t-sidebar-w: 220px;
+  --t-topbar-h: 48px;
+
+  --t-transition: 0.15s ease;
+}

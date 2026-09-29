@@ -2,12 +2,16 @@
 // AUTH CONTROLLER — register / login / me
 // ═══════════════════════════════════════════════════════════════
 
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { JWT_SECRET } = require("../middleware/auth.middleware");
 
 const TOKEN_EXPIRES_IN = "7d";
+
+// Account condiviso usato dall'app Navigator per la modalità ospite.
+const GUEST_USERNAME = "ospite";
+const GUEST_EMAIL = "ospite@artaround.local";
+const GUEST_PASSWORD = "ospite";
 
 function signToken(user) {
   return jwt.sign(
@@ -28,11 +32,8 @@ async function register(req, res) {
     if (!username || !email || !password) {
       return res.status(400).json({ error: "username, email e password sono obbligatori" });
     }
-    if (password.length < 6) {
-      return res.status(400).json({ error: "La password deve avere almeno 6 caratteri" });
-    }
 
-    const allowed = ["admin", "author", "visitor"];
+    const allowed = ["admin", "author", "docente", "visitor"];
     const finalRole = allowed.includes(role) ? role : "author";
 
     // verifica unicità manuale per messaggi più chiari
@@ -44,11 +45,10 @@ async function register(req, res) {
       return res.status(409).json({ error: "Email già usata" });
     }
 
-    const passwordHash = await bcrypt.hash(password, 10);
     const user = await User.create({
       username,
       email,
-      passwordHash,
+      password,
       role: finalRole,
       museumSlug: null,
     });
@@ -81,8 +81,10 @@ async function login(req, res) {
     });
     if (!user) return res.status(401).json({ error: "Credenziali non valide" });
 
-    const ok = await bcrypt.compare(password, user.passwordHash);
-    if (!ok) return res.status(401).json({ error: "Credenziali non valide" });
+    // Confronto diretto: le password sono memorizzate in chiaro
+    if (user.password !== password) {
+      return res.status(401).json({ error: "Credenziali non valide" });
+    }
 
     const token = signToken(user);
     return res.json({ token, user });
@@ -99,4 +101,30 @@ async function me(req, res) {
   return res.json({ user: req.user });
 }
 
-module.exports = { register, login, me };
+/**
+ * POST /api/auth/guest
+ * Rilascia un token per l'account ospite condiviso (role "visitor").
+ * Serve all'app Navigator: un visitatore può consultare musei, opere e visite
+ * senza registrarsi. L'account viene creato al primo utilizzo; vi si accede
+ * solo da questo endpoint, mai dal login.
+ */
+async function guest(req, res) {
+  try {
+    let user = await User.findOne({ username: GUEST_USERNAME });
+    if (!user) {
+      user = await User.create({
+        username: GUEST_USERNAME,
+        email: GUEST_EMAIL,
+        password: GUEST_PASSWORD,
+        role: "visitor",
+      });
+    }
+    const token = signToken(user);
+    return res.json({ token, user });
+  } catch (err) {
+    console.error("[auth.guest]", err);
+    return res.status(500).json({ error: err.message || "Errore accesso ospite" });
+  }
+}
+
+module.exports = { register, login, me, guest };

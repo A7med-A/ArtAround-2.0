@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════════════════════
+ * SIDEBAR + TOPBAR + MUSEUM SELECTOR + THEME TOGGLE.
+ * ═══════════════════════════════════════════════════════════════ */
+
+/* ───────── sidebar ───────── */
+.aa-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--t-sidebar-w);
+  height: 100%;
+  background: var(--t-surface);
+  border-right: 1px solid var(--t-border);
+  font-family: var(--t-font-body);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.aa-sidebar__brand {
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid var(--t-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aa-sidebar__mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--t-goldBg);
+  border: 1px solid var(--t-goldDim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--t-gold);
+}
+.aa-sidebar__name {
+  font-family: var(--t-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--t-text);
+  letter-spacing: 0.02em;
+}
+.aa-sidebar__sub {
+  font-size: 10px;
+  color: var(--t-textMuted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.aa-sidebar__nav {
+  flex: 1;
+  padding: 6px 10px;
+  overflow-y: auto;
+}
+.aa-sidebar__section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--t-textMuted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 8px 0 6px;
+  padding-left: 6px;
+}
+.aa-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 7px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  margin-bottom: 2px;
+  transition: all var(--t-transition);
+  color: var(--t-textSec);
+}
+.aa-nav-item:hover { background: var(--t-surfaceEl); color: var(--t-text); }
+.aa-nav-item.is-active {
+  background: var(--t-goldBg);
+  border-color: var(--t-goldDim);
+  color: var(--t-gold);
+}
+.aa-nav-item.is-active .aa-nav-item__label { color: var(--t-gold); font-weight: 600; }
+.aa-nav-item__text { flex: 1; min-width: 0; }
+.aa-nav-item__label { font-size: 13px; line-height: 1; }
+.aa-nav-item__sub { font-size: 10px; color: var(--t-textMuted); margin-top: 2px; }
+.aa-nav-item__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--t-gold);
+  opacity: 0;
+}
+.aa-nav-item.is-active .aa-nav-item__dot { opacity: 1; }
+
+/* user block */
+.aa-sidebar__user {
+  padding: 14px;
+  border-top: 1px solid var(--t-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aa-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--t-goldDim), var(--t-gold));
+  color: var(--t-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.aa-sidebar__user-info { flex: 1; min-width: 0; }
+.aa-sidebar__user-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aa-sidebar__user-role { font-size: 11px; color: var(--t-textMuted); }
+
+/* ───────── museum selector (in sidebar) ───────── */
+.aa-museum-selector {
+  position: relative;
+  padding: 14px 14px 10px;
+}
+.aa-museum-selector__trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  background: var(--t-bg);
+  border: 1px solid var(--t-border);
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+}
+.aa-museum-selector__trigger:hover { border-color: var(--t-borderHi); }
+.aa-museum-selector__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--t-success);
+  flex-shrink: 0;
+}
+.aa-museum-selector__name {
+  flex: 1;
+  text-align: left;
+  font-size: 12px;
+  color: var(--t-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aa-museum-selector__menu {
+  position: absolute;
+  top: 100%;
+  left: 14px;
+  right: 14px;
+  background: var(--t-surface);
+  border: 1px solid var(--t-border);
+  border-radius: 7px;
+  margin-top: 4px;
+  padding: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.aa-museum-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 5px;
+  transition: background var(--t-transition);
+}
+.aa-museum-row:hover { background: var(--t-surfaceEl); }
+.aa-museum-row.is-active { background: var(--t-goldBg); }
+.aa-museum-row__btn {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--t-text);
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.aa-museum-row.is-active .aa-museum-row__btn { color: var(--t-gold); }
+.aa-museum-row__edit {
+  background: none;
+  border: none;
+  padding: 6px;
+  margin-right: 4px;
+  cursor: pointer;
+  color: var(--t-textMuted);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--t-transition), color var(--t-transition), background var(--t-transition);
+}
+.aa-museum-row:hover .aa-museum-row__edit,
+.aa-museum-row.is-active .aa-museum-row__edit { opacity: 1; }
+.aa-museum-row__edit:hover {
+  color: var(--t-gold);
+  background: var(--t-surfaceHi);
+}
+.aa-museum-selector__empty {
+  padding: 12px;
+  font-size: 12px;
+  color: var(--t-textMuted);
+  text-align: center;
+}
+.aa-museum-selector__sep {
+  height: 1px;
+  background: var(--t-border);
+  margin: 4px 2px;
+}
+.aa-museum-selector__create {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--t-gold);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-weight: 500;
+}
+.aa-museum-selector__create:hover { background: var(--t-goldBg); }
+
+/* ───────── topbar ───────── */
+.aa-topbar {
+  display: flex;
+  align-items: center;
+  height: var(--t-topbar-h);
+  padding: 0 20px;
+  gap: 12px;
+  border-bottom: 1px solid var(--t-border);
+  background: var(--t-surface);
+  font-family: var(--t-font-body);
+  flex-shrink: 0;
+}
+.aa-topbar__hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--t-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: var(--t-text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.aa-topbar__hamburger:hover {
+  background: var(--t-surfaceEl);
+  border-color: var(--t-borderHi);
+}
+.aa-topbar__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.aa-topbar__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.aa-topbar__sep { color: var(--t-border); margin: 0 2px; }
+.aa-topbar__sub { font-size: 12px; color: var(--t-textMuted); }
+.aa-topbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.aa-topbar__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--t-textMuted);
+}
+.aa-topbar__status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--t-success);
+}
+.aa-topbar__vsep { width: 1px; height: 18px; background: var(--t-border); }
+.aa-topbar__version {
+  font-size: 11px;
+  color: var(--t-textMuted);
+  font-family: var(--t-font-mono);
+}
+
+/* ───────── theme toggle ───────── */
+.aa-theme-toggle {
+  background: none;
+  border: 1px solid var(--t-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--t-textSec);
+  font-size: 12px;
+  font-family: inherit;
+}
+.aa-theme-toggle:hover { background: var(--t-surfaceEl); color: var(--t-text); }
+
+/* ───────── Mobile drawer ───────── */
+@media (max-width: 768px) {
+  .aa-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 85vw;
+    z-index: 100;
+    transform: translateX(-100%);
+    box-shadow: 6px 0 24px rgba(0, 0, 0, 0.25);
+  }
+  .aa-sidebar.is-mobile-open { transform: translateX(0); }
+
+  .aa-topbar { padding: 0 12px; gap: 8px; }
+  .aa-topbar__hamburger { display: inline-flex; }
+  .aa-topbar__sub, .aa-topbar__sep { display: none; }
+  .aa-topbar__status-label { display: none; }
+  .aa-topbar__vsep { display: none; }
+  .aa-topbar__version { display: none; }
+}
+
+.aa-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.aa-sidebar-backdrop.is-visible { opacity: 1; }

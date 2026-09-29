@@ -8,9 +8,6 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       lowercase: true,
-      minlength: 3,
-      maxlength: 30,
-      match: [/^[a-z0-9_-]+$/, "Username: solo lettere minuscole, numeri, _ e -"],
     },
     email: {
       type: String,
@@ -18,15 +15,22 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       lowercase: true,
-      match: [/^\S+@\S+\.\S+$/, "Email non valida"],
     },
-    passwordHash: {
+    // Password in chiaro: scelta di semplificazione del progetto didattico.
+    // In un sistema reale qui andrebbe un hash (bcrypt o simili), perché
+    // chiunque legga il database vedrebbe altrimenti tutte le password.
+    password: {
       type: String,
       required: true,
     },
+    // admin   → gestisce musei e utenti
+    // author  → cura i contenuti dei musei a cui ha accesso
+    // docente → prepara visite per la propria classe: non tocca musei,
+    //           mappe né opere altrui, e ciò che crea resta privato
+    // visitor → consulta e basta
     role: {
       type: String,
-      enum: ["admin", "author", "visitor"],
+      enum: ["admin", "author", "docente", "visitor"],
       default: "author",
       required: true,
     },
@@ -41,10 +45,10 @@ const userSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-// Non serializzare passwordHash quando si fa toJSON
+// La password non esce mai dalle risposte dell'API
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
-  delete obj.passwordHash;
+  delete obj.password;
   return obj;
 };
 

@@ -1,0 +1,184 @@
+/* ═══════════════════════════════════════════════════════════════
+   SCREEN — struttura comune a tutte le schermate:
+   intestazione fissa, corpo scrollabile, footer fisso con le azioni.
+
+   Su desktop l'app usa tutta la larghezza, ma il contenuto di ogni
+   schermata resta dentro una misura leggibile, dichiarata da `--content-max`.
+   Le tre misure corrispondono a tre usi diversi:
+     reading  testo continuo da leggere
+     wide     griglie di schede
+     full     mappa e fotocamera, che devono riempire lo spazio
+   ═══════════════════════════════════════════════════════════════ */
+
+.screen {
+  --content-max: 760px;
+  /* Misura usata nella fascia intermedia (tablet, finestre desktop strette),
+     dove il layout è ancora a colonna singola ma la finestra è già larga:
+     senza limite una riga di testo arriverebbe a 90 caratteri. */
+  --content-max-md: 640px;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  position: relative;
+}
+
+/* Le griglie di schede e la mappa usano tutta la larghezza disponibile
+   già dalla fascia intermedia: non sono testo da leggere. */
+.wide {
+  --content-max: 1140px;
+  --content-max-md: none;
+}
+
+.full {
+  --content-max: none;
+  --content-max-md: none;
+}
+
+.header {
+  flex-shrink: 0;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerPlain {
+  border-bottom: none;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  margin-left: -6px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.headings {
+  min-width: 0;
+  flex: 1;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 12.5px;
+  color: var(--textSec);
+  margin-top: 2px;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* min-height (non height) così le schermate "vuote" restano centrate
+   verticalmente senza impedire lo scroll a quelle lunghe. */
+.inner {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerPadded {
+  padding: 16px 18px 24px;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 12px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.footerInner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Fascia intermedia: colonna singola, ma centrata ─────────── */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .headerInner,
+  .inner,
+  .footerInner {
+    width: 100%;
+    max-width: var(--content-max-md);
+    margin-inline: auto;
+  }
+}
+
+/* ── Desktop ─────────────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 26px 32px 20px;
+  }
+
+  .headerInner {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-inline: auto;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 13.5px;
+  }
+
+  .innerPadded {
+    padding: 24px 32px 40px;
+  }
+
+  .inner {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-inline: auto;
+  }
+
+  .footerInner {
+    width: 100%;
+    max-width: var(--content-max);
+    margin-inline: auto;
+  }
+
+  .footer {
+    padding: 18px 32px;
+  }
+}

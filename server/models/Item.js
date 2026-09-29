@@ -43,6 +43,18 @@ const itemSchema = new mongoose.Schema(
 
     tags: [{ type: String, trim: true, lowercase: true }],
 
+    // Visibilità nel catalogo pubblico.
+    //   pubblica → compare a tutti i visitatori (default, comportamento storico)
+    //   privata  → materiale che l'autore non pubblica: resta invisibile nel
+    //              catalogo e raggiunge i visitatori solo se incluso in una
+    //              visita, tipicamente una visita guidata di un docente.
+    visibility: {
+      type: String,
+      enum: ["pubblica", "privata"],
+      default: "pubblica",
+      index: true,
+    },
+
     // Ownership stretta
     createdBy: {
       type: String,

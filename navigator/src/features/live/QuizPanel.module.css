@@ -1,0 +1,151 @@
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressText {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--textMuted);
+  white-space: nowrap;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surfaceHi);
+}
+
+.dotDone {
+  background: var(--goldDim);
+}
+
+.dotCurrent {
+  background: var(--gold);
+  box-shadow: 0 0 0 3px var(--goldBg);
+}
+
+.question {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.4;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--borderHi);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.optionPicked {
+  border-color: var(--goldDim);
+  background: var(--goldBg);
+}
+
+.letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surfaceHi);
+  color: var(--textSec);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.optionPicked .letter {
+  background: var(--gold);
+  color: var(--onGold);
+}
+
+.state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 15px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.stateWaiting {
+  background: var(--surfaceEl);
+  border: 1px solid var(--border);
+  color: var(--textSec);
+}
+
+.stateDone {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 40%, transparent);
+  color: var(--success);
+}
+
+.error {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+  color: var(--danger);
+  font-size: 12.5px;
+}
+
+@media (min-width: 1024px) {
+  .question {
+    font-size: 28px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

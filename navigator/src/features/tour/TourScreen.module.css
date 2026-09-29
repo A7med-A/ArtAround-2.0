@@ -1,0 +1,373 @@
+/* ── Intestazione con avanzamento ────────────────────────────── */
+
+.head {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headInner {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.headLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.headTexts {
+  min-width: 0;
+}
+
+.exitBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  background: var(--surfaceEl);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visitTitle {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stopCounter {
+  font-size: 12px;
+  color: var(--textSec);
+}
+
+/* ── Corpo: cinque blocchi, una colonna su mobile ────────────── */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelHero {
+  position: relative;
+}
+
+.detailBtn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--r-pill);
+  background: rgba(15, 14, 12, 0.7);
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.author {
+  font-size: 14px;
+  color: var(--textSec);
+  margin-bottom: 12px;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.sectionLabelText {
+  font-size: 11px;
+  color: var(--textMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.levels {
+  display: flex;
+  gap: 6px;
+}
+
+.level {
+  flex: 1;
+  padding: 9px 4px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--textSec);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.levelActive {
+  border-color: var(--goldDim);
+  background: var(--goldBg);
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.lengths {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.length {
+  flex: 1;
+  padding: 7px 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--textMuted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lengthActive {
+  border-color: var(--borderHi);
+  background: var(--surfaceHi);
+  color: var(--text);
+}
+
+.textCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.text {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text);
+  text-wrap: pretty;
+  white-space: pre-wrap;
+}
+
+.fallbackNote {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11.5px;
+  color: var(--textMuted);
+  line-height: 1.45;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+/* ── Comandi grandi ──────────────────────────────────────────── */
+
+.controls {
+  flex-shrink: 0;
+  padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.controlsInner {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.controlRow {
+  display: flex;
+  gap: 8px;
+}
+
+.controlRow + .controlRow {
+  margin-top: 8px;
+}
+
+/* ── Schermata di avvicinamento ──────────────────────────────── */
+
+.arrival {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.arrivalFooter {
+  flex-shrink: 0;
+  padding: 14px 18px calc(18px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arrivalHint {
+  font-size: 12.5px;
+  color: var(--textSec);
+  text-align: center;
+  line-height: 1.45;
+}
+
+.arrivalTarget {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.floorWarning {
+  margin: 0 18px 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--goldBg);
+  border: 1px solid var(--goldDim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--text);
+}
+
+/* ── Desktop ─────────────────────────────────────────────────── */
+
+@media (min-width: 1024px) {
+  /*
+    Misura del contenuto della visita: più larga di una schermata di solo
+    testo, perché deve reggere due colonne. Da qui la ereditano intestazione,
+    corpo e barra dei comandi, che restano così allineati fra loro.
+  */
+  .tourScreen {
+    --content-max: 1000px;
+  }
+
+  .head {
+    padding: 18px 32px 14px;
+  }
+
+  /*
+    Due colonne: a sinistra ciò che si guarda e si comanda (immagine,
+    audioguida, livelli), a destra il testo da leggere. Il titolo attraversa
+    entrambe. Le aree ridispongono i blocchi senza cambiarne l'ordine nel
+    DOM, che resta quello di lettura mobile.
+  */
+  .panel {
+    display: grid;
+    /* Proporzionale con minimo e massimo: appena sopra il breakpoint la
+       colonna dell'immagine si stringe invece di schiacciare il testo. */
+    grid-template-columns: clamp(240px, 34%, 340px) minmax(0, 1fr);
+    grid-template-areas:
+      "head   head"
+      "hero   text"
+      "player text"
+      "levels text";
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 28px;
+    row-gap: 16px;
+    align-items: start;
+  }
+
+  .panelHero {
+    grid-area: hero;
+  }
+  .panelHead {
+    grid-area: head;
+  }
+  .panelPlayer {
+    grid-area: player;
+  }
+  .panelLevels {
+    grid-area: levels;
+  }
+  .panelText {
+    grid-area: text;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .author {
+    font-size: 15px;
+  }
+
+  .textCard {
+    padding: 24px 26px;
+  }
+
+  .text {
+    font-size: 16.5px;
+    line-height: 1.8;
+  }
+
+  .controls {
+    padding: 14px 32px;
+  }
+
+  .arrivalFooter {
+    padding: 16px 32px 20px;
+    align-items: center;
+  }
+
+  .arrivalFooter > * {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .floorWarning {
+    margin-inline: 32px;
+    max-width: 640px;
+  }
+}

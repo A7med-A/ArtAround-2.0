@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════════════════════════
+   APP SHELL
+   L'app occupa sempre tutta la viewport (100dvh, così la barra del
+   browser mobile che compare e scompare non taglia il contenuto).
+
+   Non esiste una versione desktop separata: è la stessa app che, oltre
+   il breakpoint, distribuisce il contenuto sullo spazio disponibile
+   (navigazione laterale, griglie a più colonne, colonne affiancate).
+   Le larghezze di lettura restano limitate — vedi Screen.module.css —
+   perché una riga di testo larga 1400 px è illeggibile.
+   ═══════════════════════════════════════════════════════════════ */
+
+.stage {
+  height: 100dvh;
+  width: 100%;
+  background: var(--bg);
+}
+
+.frame {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenuto fra l'intestazione e la navigazione */
+.body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Punto di montaggio di modali, pannelli e toast: copre l'intera app,
+  navigazione compresa.
+*/
+.overlays {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.overlays > * {
+  pointer-events: auto;
+}

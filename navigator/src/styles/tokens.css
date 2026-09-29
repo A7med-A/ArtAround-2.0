@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — ArtAround Navigator
+   Palette allineata al Marketplace: fondo caldo scuro + accento oro.
+   Il tema si applica su <html data-theme="dark|light">.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Tipografia */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* Raggi */
+  --r-sm: 9px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+
+  /* Spaziature */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+
+  /* Ombre */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.4);
+
+  /* Colore fisso su fondo oro (non cambia con il tema) */
+  --onGold: #0f0e0c;
+
+  /* Altezze layout */
+  --bottom-nav-h: 68px;
+}
+
+:root,
+:root[data-theme="dark"] {
+  --bg: #0f0e0c;
+  --surface: #1a1917;
+  --surfaceEl: #222018;
+  --surfaceHi: #2a2824;
+
+  --border: #2e2c26;
+  --borderHi: #44413a;
+
+  --gold: #c9a96e;
+  --goldDim: #8a7148;
+  --goldBg: rgba(201, 169, 110, 0.1);
+
+  --text: #f0ede6;
+  --textSec: #9a9180;
+  --textMuted: #5a5448;
+
+  --danger: #d95f4b;
+  --success: #6aab87;
+  --info: #5b8fd4;
+
+  --gridBg: #070706;
+  --mapRoom: #1e2a1e;
+  --mapRoomB: #3a5a3a;
+  --mapArt: #23203a;
+  --mapArtB: #4a4a8a;
+
+  --scrim: rgba(8, 7, 5, 0.86);
+  --scrimSoft: rgba(8, 7, 5, 0.7);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f1ec;
+  --surface: #ffffff;
+  --surfaceEl: #f0ece5;
+  --surfaceHi: #e8e3da;
+
+  --border: #ddd8ce;
+  --borderHi: #c8c0b0;
+
+  --gold: #9a6f2e;
+  --goldDim: #c49a52;
+  --goldBg: rgba(154, 111, 46, 0.08);
+
+  --text: #1a1714;
+  --textSec: #6b6055;
+  --textMuted: #a89f94;
+
+  --danger: #c0402e;
+  --success: #3a8a5e;
+  --info: #3060a8;
+
+  --gridBg: #ebe6de;
+  --mapRoom: #d8ead4;
+  --mapRoomB: #8ab87a;
+  --mapArt: #dcdaf0;
+  --mapArtB: #8a8ac0;
+
+  --scrim: rgba(30, 26, 20, 0.72);
+  --scrimSoft: rgba(30, 26, 20, 0.55);
+  color-scheme: light;
+}

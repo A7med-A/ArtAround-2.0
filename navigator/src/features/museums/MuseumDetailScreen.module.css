@@ -1,0 +1,190 @@
+.screen {
+  --art-height: 230px;
+}
+
+.hero {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Colonna con presentazione e azioni: su mobile è semplicemente il
+   normale flusso verticale, su desktop diventa la colonna di destra. */
+.column {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroBack {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: rgba(15, 14, 12, 0.6);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.heroActions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.heroFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--bg), transparent);
+  pointer-events: none;
+}
+
+.content {
+  padding: 0 22px 24px;
+  margin-top: -30px;
+  position: relative;
+}
+
+.city {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 4px 0 10px;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--textSec);
+  margin-bottom: 20px;
+  text-wrap: pretty;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat {
+  padding: 14px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.statValue {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 10.5px;
+  color: var(--textMuted);
+  margin-top: 4px;
+}
+
+.secondary {
+  display: flex;
+  gap: 10px;
+}
+
+.secondary > * {
+  flex: 1;
+}
+
+.resume {
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: var(--goldBg);
+  border: 1px solid var(--goldDim);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.resumeText {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.resumeTitle {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Desktop: immagine a sinistra, presentazione a destra ────── */
+
+@media (min-width: 1024px) {
+  .screen {
+    --art-height: 100%;
+    flex-direction: row;
+  }
+
+  .hero {
+    width: 40%;
+    max-width: 520px;
+    height: 100%;
+  }
+
+  .heroFade {
+    display: none;
+  }
+
+  .column {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    margin-top: 0;
+    padding: 12px 40px 40px;
+    max-width: 720px;
+  }
+
+  .name {
+    font-size: 38px;
+  }
+
+  .secondary {
+    max-width: 420px;
+  }
+}

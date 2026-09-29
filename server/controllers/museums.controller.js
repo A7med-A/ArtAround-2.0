@@ -5,6 +5,9 @@ const User = require("../models/User");
  * GET /api/museums
  *   - admin: tutti
  *   - author: solo i musei a cui ha accesso (museumSlugs)
+ *   - docente e visitor: tutti, in sola lettura. Un docente porta la classe
+ *     dove vuole: non ha senso che un amministratore debba abilitarlo museo
+ *     per museo, visto che non può comunque modificarne nulla.
  */
 async function getAllMuseums(req, res) {
   try {
@@ -14,7 +17,7 @@ async function getAllMuseums(req, res) {
       if (slugs.length === 0) return res.json([]);
       filter = { slug: { $in: slugs } };
     }
-    // admin e visitor vedono tutti i musei
+    // admin, docente e visitor vedono tutti i musei
     const museums = await Museum.find(filter);
     res.json(museums);
   } catch (error) {

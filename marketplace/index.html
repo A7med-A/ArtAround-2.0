@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtAround · Marketplace</title>
+
+    <!-- Tema applicato prima del primo paint (no flash) -->
+
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/components/atoms.css" />
+    <link rel="stylesheet" href="styles/pages/landing.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand__mark">A</div>
+        <div class="brand__name">ArtAround</div>
+      </div>
+      <div class="nav-actions">
+        <button class="aa-theme-toggle" type="button" data-slot="theme-toggle"></button>
+        <button class="aa-btn aa-btn--ghost" data-href="login.html">Accedi</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Il marketplace dei <em>contenuti museali</em></h1>
+      <p>
+        Crea, condividi e gestisci visite guidate personalizzate. Una piattaforma per autori,
+        insegnanti e visitatori.
+      </p>
+      <div class="hero__cta">
+        <button class="aa-btn aa-btn--primary" data-href="login.html">Inizia ora</button>
+        <button class="aa-btn" data-href="login.html#register">Crea account</button>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature__label">Per autori</div>
+        <div class="feature__title">Contenuti adattivi</div>
+        <div class="feature__desc">
+          Scrivi descrizioni in più toni e durate. I visitatori ricevono il testo giusto per loro,
+          automaticamente.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__label">Per insegnanti</div>
+        <div class="feature__title">Visite sincronizzate</div>
+        <div class="feature__desc">
+          Porta la classe al museo: gli studenti seguono insieme tramite codice condiviso.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__label">Per visitatori</div>
+        <div class="feature__title">Esperienza su misura</div>
+        <div class="feature__desc">
+          Scegli la visita, indossa gli auricolari, lasciati guidare. Niente manuali, solo arte.
+        </div>
+      </div>
+    </div>
+
+    <footer>ArtAround · Progetto universitario Tecnologie Web · A.A. 2025/26</footer>
+
+    <script type="module" src="js/pages/landing.js"></script>
+  </body>
+</html>

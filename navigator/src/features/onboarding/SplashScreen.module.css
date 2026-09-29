@@ -1,0 +1,63 @@
+.splash {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+  background: radial-gradient(120% 80% at 50% 30%, var(--surface), var(--bg));
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: navFadeUp 0.7s ease both;
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 20px;
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.loader {
+  position: absolute;
+  bottom: 70px;
+  width: 180px;
+}
+
+.track {
+  height: 3px;
+  background: var(--surfaceHi);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.15s linear;
+}
+
+.caption {
+  text-align: center;
+  font-size: 10px;
+  color: var(--textMuted);
+  margin-top: 10px;
+  letter-spacing: 0.08em;
+}

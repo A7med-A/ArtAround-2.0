@@ -1,0 +1,47 @@
+/* ═══════════════════════════════════════════════════════════════
+ * APP SHELL — layout di app.html
+ * Sidebar fissa a sinistra + main column con topbar e outlet.
+ *
+ * Su mobile (≤ 768px) la sidebar diventa un drawer off-canvas
+ * gestito da aa-sidebar; il main occupa l'intera larghezza.
+ * ═══════════════════════════════════════════════════════════════ */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+#app-outlet {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Spinner di caricamento mostrato durante lo switch sezione */
+.app-section-loader {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .app-layout {
+    height: 100vh;
+    height: 100dvh; /* dvh evita problemi con la barra URL su iOS/Android */
+  }
+
+  /* Sicurezza: previene overflow orizzontale di componenti che
+     non sono ancora pienamente responsive (map editor). */
+  body {
+    overflow-x: hidden;
+  }
+}

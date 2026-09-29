@@ -47,25 +47,62 @@ function requireAdmin(req, res, next) {
   next();
 }
 
+/** Ruoli che possono consultare qualsiasi museo ma non modificarne nulla. */
+const READ_ONLY_ROLES = ["visitor", "docente"];
+
 /**
- * Verifica che l'utente possa accedere/modificare il museo con lo slug indicato in req.params.slug.
- * - Admin: sempre OK
- * - Author: solo se il suo museumSlug coincide con quello richiesto
+ * Accesso al MUSEO in sé: anagrafica e pianta (Museum.floors).
+ * - Admin: sempre
+ * - Author: solo i musei a cui ha accesso
+ * - Docente e visitatore: sola lettura, su qualsiasi museo
+ *
+ * È la barriera che impedisce a un docente di toccare mappa e anagrafica:
+ * per lui il museo è un dato di fatto, non qualcosa da curare.
  */
 function canAccessMuseum(req, res, next) {
   if (!req.user) return res.status(401).json({ error: "Non autenticato" });
   const slug = req.params.slug;
-  if (req.user.role === "admin") return next();
-  // I visitatori possono LEGGERE qualsiasi museo, ma non scrivere.
-  if (req.user.role === "visitor" && req.method === "GET") return next();
-  const slugs = req.user.museumSlugs || [];
-  if (req.user.role === "author" && slugs.includes(slug)) return next();
+  const { role } = req.user;
+
+  if (role === "admin") return next();
+  if (req.method === "GET" && READ_ONLY_ROLES.includes(role)) return next();
+  if (role === "author" && (req.user.museumSlugs || []).includes(slug)) return next();
+
+  if (READ_ONLY_ROLES.includes(role)) {
+    return res.status(403).json({ error: "Non puoi modificare i musei" });
+  }
   return res.status(403).json({ error: "Non hai accesso a questo museo" });
+}
+
+/**
+ * Accesso ai CONTENUTI di un museo: opere e visite.
+ *
+ * Decide solo se il ruolo può entrare nella sezione. Chi possiede il singolo
+ * documento e chi può vederlo lo stabiliscono i controller, perché dipende dal
+ * documento — un docente entra qui per gestire il proprio materiale, non
+ * quello del museo.
+ */
+function canAccessContent(req, res, next) {
+  if (!req.user) return res.status(401).json({ error: "Non autenticato" });
+  const slug = req.params.slug;
+  const { role } = req.user;
+
+  if (role === "admin") return next();
+  if (role === "docente") return next();
+  if (role === "visitor") {
+    if (req.method === "GET") return next();
+    return res.status(403).json({ error: "I visitatori possono solo consultare" });
+  }
+  if (role === "author" && (req.user.museumSlugs || []).includes(slug)) return next();
+
+  return res.status(403).json({ error: "Non hai accesso ai contenuti di questo museo" });
 }
 
 module.exports = {
   JWT_SECRET,
+  READ_ONLY_ROLES,
   requireAuth,
   requireAdmin,
   canAccessMuseum,
+  canAccessContent,
 };

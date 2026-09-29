@@ -1,0 +1,251 @@
+.screen {
+  --art-height: 250px;
+}
+
+.hero {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: rgba(15, 14, 12, 0.6);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--bg), transparent);
+  pointer-events: none;
+}
+
+.content {
+  padding: 0 20px 24px;
+  margin-top: -20px;
+  position: relative;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 4px;
+  text-wrap: balance;
+}
+
+.author {
+  font-size: 15px;
+  color: var(--textSec);
+  margin-bottom: 14px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.metaCard {
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  min-width: 0;
+}
+
+.metaKey {
+  font-size: 10px;
+  color: var(--textMuted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metaValue {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 600;
+  margin-top: 3px;
+  word-break: break-word;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sectionTitleText {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.description {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--textSec);
+  margin-bottom: 22px;
+  text-wrap: pretty;
+}
+
+.levels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.level {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.levelOpen {
+  border-color: var(--goldDim);
+}
+
+.levelHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.levelName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.levelBody {
+  padding: 0 15px 15px;
+}
+
+.variantTabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.variantTab {
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--textMuted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.variantActive {
+  border-color: var(--borderHi);
+  background: var(--surfaceHi);
+  color: var(--text);
+}
+
+.levelText {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--textSec);
+  margin-bottom: 12px;
+  text-wrap: pretty;
+  white-space: pre-wrap;
+}
+
+.listen {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border-radius: 10px;
+  background: var(--goldBg);
+  border: 1px solid var(--goldDim);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.noContent {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px dashed var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--textSec);
+  line-height: 1.5;
+}
+
+/* ── Desktop: immagine a sinistra, scheda scorrevole a destra ── */
+
+@media (min-width: 1024px) {
+  .screen {
+    /* L'immagine riempie l'altezza della colonna invece di restare
+       una fascia orizzontale larga quanto lo schermo. */
+    --art-height: 100%;
+    flex-direction: row;
+  }
+
+  .hero {
+    width: 42%;
+    max-width: 560px;
+    height: 100%;
+  }
+
+  /* La sfumatura serviva a raccordare l'immagine al testo sottostante:
+     su desktop il testo è di fianco, non sotto. */
+  .fade {
+    display: none;
+  }
+
+  .content {
+    margin-top: 0;
+    padding: 8px 40px 40px;
+    max-width: 720px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .metaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .levelHead:hover {
+    background: var(--surfaceEl);
+  }
+}

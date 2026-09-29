@@ -1,0 +1,16 @@
+/* Mobile: contenuto sopra, navigazione sotto.
+   Desktop: navigazione a sinistra, contenuto a destra (l'ordine è
+   invertito in MainNav.module.css, così nel DOM il contenuto resta primo). */
+
+.layout {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
+}

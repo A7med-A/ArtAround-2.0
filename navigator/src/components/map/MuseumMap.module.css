@@ -1,0 +1,173 @@
+.viewport {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  background: radial-gradient(
+    120% 90% at 50% 15%,
+    color-mix(in srgb, var(--gridBg) 90%, var(--gold) 6%),
+    var(--gridBg)
+  );
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+}
+
+/* Pavimento: reticolo leggero che rende leggibile la scala della pianta */
+.plan {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  outline: 1px solid var(--border);
+}
+
+.cell {
+  position: absolute;
+  border-radius: 2px;
+}
+
+.route {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.pin {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.pinTarget {
+  z-index: 6;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--gold) 35%, transparent);
+  animation: navRing 1.8s ease-out infinite;
+}
+
+.targetDot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid #fff;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--info) 32%, transparent);
+  animation: navRing 1.8s 0.3s ease-out infinite;
+}
+
+.userDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--info);
+  border: 2.5px solid #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Controlli sovrapposti ───────────────────────────────────── */
+
+.zoomControls {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+
+.zoomBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.youAreHere {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.youDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--info);
+  border: 2px solid #fff;
+}
+
+.emptyPlan {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--textSec);
+}

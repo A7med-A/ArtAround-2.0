@@ -1,0 +1,132 @@
+.screen {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  background: radial-gradient(110% 70% at 50% 0%, var(--surface), var(--bg));
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0 24px;
+}
+
+.inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--goldBg);
+  border: 1px solid var(--goldDim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--textSec);
+  line-height: 1.55;
+  margin-bottom: 26px;
+  text-wrap: pretty;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--textMuted);
+  margin-bottom: -4px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  background: var(--surfaceEl);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.field:focus-within {
+  border-color: var(--goldDim);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 16px;
+}
+
+/* Il codice si digita a orecchio da quanto dettato in classe: cifre grandi,
+   ben spaziate e a larghezza fissa, così una cifra sbagliata si nota subito. */
+.codeInput {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+}
+
+.error {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+  color: var(--danger);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.hint {
+  font-size: 11.5px;
+  color: var(--textMuted);
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--textSec);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 2px;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 34px;
+  }
+}
